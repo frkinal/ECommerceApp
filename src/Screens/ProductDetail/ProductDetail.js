@@ -21,6 +21,7 @@ import {
 } from '../../Redux/services'
 import { reset } from '../../Redux/toggleFavoriteSlice';
 import { resetFavorites } from '../../Redux/getFavoritesSlice';
+import { resetProductDetail } from '../../Redux/productDetailsSlice';
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -50,6 +51,7 @@ const ProductDetail = ({ navigation, route }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(resetProductDetail())
         dispatch(productDetails({ id: id }))
     }, [])
 
@@ -84,7 +86,7 @@ const ProductDetail = ({ navigation, route }) => {
                     setIsFavorite(false)
                 }
             } else {
-                navigation.navigate('Login')
+                navigation.navigate('Hesabım')
             }
         });
     }
@@ -205,7 +207,7 @@ const ProductDetail = ({ navigation, route }) => {
                                         navigation.navigate('Sepetim')
                                     }
                                 } else {
-                                    navigation.navigate('Login')
+                                    navigation.navigate('Hesabım')
                                 }
                             });
                         }}

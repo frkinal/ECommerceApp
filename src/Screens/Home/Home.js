@@ -98,13 +98,13 @@ const Home = ({ navigation }) => {
     const numColumns = 2
     return (
         <React.Fragment>
-            {(sliderstatus === true || brandstatus === true || productstatus === true) && (
+            {(sliderstatus || brandstatus || productstatus) && (
                 <Loading />
             )}
-            {(sliderstatus === false && brandstatus === false && productstatus === false) && (
+            {(!sliderstatus && !brandstatus && !productstatus) && (
                 <SafeAreaView style={styles.container}>
                     {
-                        focus === false
+                        !focus
                             ? (
                                 <View style={styles.banner}>
                                     <TouchableOpacity onPress={() => setFocus(!focus)}>

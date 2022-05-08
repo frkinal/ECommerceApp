@@ -7,6 +7,12 @@ export const productDetailSlice = createSlice({
         productDetailData: undefined,
         images: undefined,
     },
+    reducers: {
+        resetProductDetail: state => {
+            state.productDetailData = undefined;
+            state.images = undefined;
+        },
+    },
     extraReducers: {
         [productDetails.pending]: state => {
             state.status = 'loading';
@@ -22,4 +28,6 @@ export const productDetailSlice = createSlice({
         },
     },
 });
+
+export const { resetProductDetail } = productDetailSlice.actions
 export default productDetailSlice.reducer;
